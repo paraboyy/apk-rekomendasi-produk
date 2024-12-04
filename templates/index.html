@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendasi Produk E-Commerce</title>
+</head>
+<body>
+    <h1>Rekomendasi Produk Berdasarkan Usia</h1>
+
+    <!-- Form untuk Input Usia -->
+    <form method="POST" action="/recommend">
+        <label for="age">Masukkan Usia Anda:</label>
+        <input type="text" id="age" name="age" required>
+        <button type="submit">Dapatkan Rekomendasi</button>
+    </form>
+
+    <!-- Menampilkan Pesan Error -->
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <!-- Menampilkan Rekomendasi Produk -->
+    {% if recommendations %}
+        <h2>Rekomendasi Produk untuk Usia {{ age }}:</h2>
+        <ul>
+        {% for category, count in recommendations.items() %}
+            <li>Produk Kategori: {{ category }} - Jumlah: {{ count }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
